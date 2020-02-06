@@ -16,5 +16,6 @@ var movies = require('./movies.js');
 
 //Use the Router on the sub route /movies
 app.use(movies.routes());
+app.use(movies.allowedMethods());
 
 app.listen(3000);
