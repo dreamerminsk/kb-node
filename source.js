@@ -1,8 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
+const sqlite = require('sqlite');
 
-let db = new sqlite3.Database('./kb.db', (err) => {
-  if (err) {
-    console.error(err.message);
-  }
-  console.log('Connected to the kb database.');
-});
+const [mainDb, usersDb] = await Promise.all([
+    sqlite.open('./main.sqlite', { Promise }),
+    sqlite.open('./users.sqlite', { Promise })
+  ]);
